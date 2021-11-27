@@ -1,0 +1,160 @@
+<?php 
+
+if (isset($_POST['submit'])){
+
+$yourname=$_POST['yourname'];
+$lovername=$_POST['lovername'];
+
+$rand=rand(40,99);
+$tot=$yourname.' + '.$lovername.'='.$rand." % ";
+
+} 
+
+
+
+	?>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>love calculate</title>
+
+<style type="text/css">
+	
+body{
+
+	background-image: url("love.jpg");
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form{
+    padding: 25px;
+	width: 300px;
+	height: 200px;
+	background: pink;
+	box-shadow: 0px 0px 10px 0px pink;
+	position: absolute;
+	bottom: 170px;
+
+}
+
+.lovername{
+	
+	margin-top: 10px;
+	color: black;
+}
+.yourname{
+    margin-left: 7px;
+}
+
+.submit{
+	text-align: center;
+	margin-left: 120px;
+	margin-top: 18px;
+	background: red;
+	padding: 10px;
+}
+
+label{
+	color: black;
+	font-weight: bold;
+}
+.board{
+	border: 1px solid black;
+	margin-top: 10px;
+	box-shadow: 5px 5px #888888;
+    background: red;
+    width: 150px;
+    height: 50px;
+
+}
+</style>
+
+
+</head>
+<body>
+
+<form method="post" action="#">
+
+<div class="yourname">
+  <label>Your Name</label>	
+  <input type="text" name="yourname" placeholder="Your name">
+</div>
+
+<div class="lovername">
+ <label>Lover Name</label>	
+ <input type="text" name="lovername" placeholder="Lover name">
+</div>
+
+<input class="submit" type="submit" name="submit" value="calculate Love">
+
+
+<div>
+	
+	<p>
+		<?php
+		if (isset($tot)) {
+			echo $tot;
+		}
+        
+		?>
+	</p>
+	
+
+</div>
+<div class="board">
+	
+	<p>
+
+     <?php	
+
+		if (isset($_POST['submit'])) {
+			
+
+			echo "yourname:". $_POST['yourname'];
+
+			echo "<br/>";
+
+			echo "lovername:". $_POST['lovername'];
+
+			$filename="k.txt";
+			$content =$_POST['yourname'] . ',' .$_POST["lovername"] . "\n";
+			$fp = fopen($filename, 'a+');
+			fwrite($fp, $content);
+			fclose($fp);
+		}
+		
+        
+		?>
+	</p>
+	
+
+</div>
+
+
+
+</form>
+
+
+
+</body>
+</html>
+
+
+<?php
+
+
+
+
+?>
+
+
+
